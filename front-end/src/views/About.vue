@@ -13,8 +13,13 @@
     <h2>How to Play</h2>
     <p>The goal of cookie clicker is extremely simple, click the cookie! As each time that you do, the number of cookies that you make will go up. You can then
        spend the cookies that you make on upgrades to make cookies faster.</p>
-    <p><b>Warning:</b> This very simple version of the game is not connected to any server, so any
-       progress will be lost if you refresh or close the page</p>
+    <p><b>Warning:</b> You will lose your progress if you leave or refresh the page, but you can save a record of the cookies
+        you produced to the records page.</p>
+    <br>
+    <h2>What's New?</h2>
+    <p>I have added a records page which allows you to save your total cookies produced to a server. You can also update your record
+       if for whatever reason you return and get a higher total than you had before. You can also delete records if you want, but please
+       don't delete other people's records!</p>
     <br>
     <h2>About the Project</h2>
     <p>Hello! Welcome to my project! This is am <i>extremely</i> simply recreation of the popular javascript based browser game Cookie Clicker.
@@ -26,7 +31,7 @@
       are the art assets and the acheivement names. This was done for the sole purpose of making the project the project look nice and is not meant to intentinally infringe
       on any copyright that may exist or to attempt to pass off my work as the real game.</p>
     <br>
-    <a href = "https://github.com/TheHaystackKing/CreativeProject3"> Website Repository </a>
+    <a href = "https://github.com/TheHaystackKing/creative-project4"> Website Repository </a>
   </div>
 
   </div>

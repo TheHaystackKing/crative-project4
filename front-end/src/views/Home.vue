@@ -2,10 +2,10 @@
   <div class="home">
     <div class="container">
       <h1>Cookie Clicker</h1>
-      <img v-on:click="cookieClicked" class="img-fluid" alt="Vue logo" src="../assets/BigCookie.png">
+      <img v-on:click="cookieClicked" class="img-fluid" alt="Big Cookie" src="../assets/BigCookie.png">
       <h3>{{cookies}} cookies</h3>
       <br>
-      <a href = "https://github.com/TheHaystackKing/CreativeProject3"> Website Repository </a>
+      <a href = "https://github.com/TheHaystackKing/creative-project4"> Website Repository </a>
     </div>
   </div>
 </template>

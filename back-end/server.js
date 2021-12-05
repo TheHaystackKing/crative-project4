@@ -7,28 +7,23 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-// Configure multer so that it will upload to '../front-end/public/images'
-const multer = require('multer')
-const upload = multer({
-  dest: '../front-end/public/images/',
-  limits: {
-    fileSize: 10000000
-  }
-});
-
 const mongoose = require('mongoose');
 
-// connect to the database
-mongoose.connect('mongodb://localhost:27017/museum', {
+
+mongoose.connect('mongodb://localhost:27017/cookies', {
   useNewUrlParser: true
 });
 
-// Create a new item in the museum: takes a title and a path to an image.
+
 app.post('/api/items', async (req, res) => {
+  console.log("In Post Route");
   const item = new Item({
     title: req.body.title,
-    description: req.body.description,
-    path: req.body.path,
+    cookies: req.body.cookies,
+    totalCookies: req.body.totalCookies,
+    totalClicks: req.body.totalClicks,
+    upgradesPurchase: req.body.upgradesPurchase,
+    clickValue: req.body.clickValue
   });
   try {
     await item.save();
@@ -39,8 +34,9 @@ app.post('/api/items', async (req, res) => {
   }
 });
 
-// Get a list of all of the items in the museum.
+
 app.get('/api/items', async (req, res) => {
+  console.log("In Get Route")
   try {
     let items = await Item.find();
     res.send(items);
@@ -68,8 +64,7 @@ app.put('/api/items/:id', async (req, res) => {
      const item = await Item.findOne({
       _id: req.params.id
     });
-    item.title = req.body.title;
-    item.description = req.body.description;
+    item.totalCookies = req.body.totalCookies;
     await item.save();
     res.sendStatus(200);
   } catch (error) {
@@ -79,27 +74,18 @@ app.put('/api/items/:id', async (req, res) => {
 });
 
 
-// Create a scheme for items in the museum: a title and a path to an image.
+
 const itemSchema = new mongoose.Schema({
   title: String,
-  description: String,
-  path: String,
+  cookies: Number,
+  totalCookies: Number,
+  totalClicks: Number,
+  upgradesPurchase: Number,
+  clickValue: Number,
 });
 
-// Create a model for items in the museum.
+
 const Item = mongoose.model('Item', itemSchema);
-
-// Upload a photo. Uses the multer middleware for the upload and then returns
-// the path where the photo is stored in the file system.
-app.post('/api/photos', upload.single('photo'), async (req, res) => {
-  // Just a safety check
-  if (!req.file) {
-    return res.sendStatus(400);
-  }
-  res.send({
-    path: "/images/" + req.file.filename
-  });
-});
 
 
 app.listen(3000, () => console.log('Server listening on port 3000!'));
